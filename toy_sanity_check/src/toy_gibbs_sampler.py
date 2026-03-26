@@ -398,7 +398,7 @@ def load_toy_data(filepath):
 
 
 if __name__ == "__main__":
-    X, Z_true, params = load_toy_data("data/toy/sequence.npz")
+    X, Z_true, params = load_toy_data("toy_sanity_check/data/sequence.npz")
 
     results = gibbs_sample_toy_hmm(
         X,

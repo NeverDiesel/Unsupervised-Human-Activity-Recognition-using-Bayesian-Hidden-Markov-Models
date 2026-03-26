@@ -5,8 +5,8 @@ from pathlib import Path
 
 import numpy as np
 
-from .common import clustering_metrics
-from .plotting import plot_toy_state_recovery, plot_transition_heatmaps
+from src.common import clustering_metrics
+from src.plotting import plot_toy_state_recovery, plot_transition_heatmaps
 
 
 def _posterior_mode_states(Z_samples: np.ndarray) -> np.ndarray:
@@ -18,7 +18,7 @@ def _posterior_mode_states(Z_samples: np.ndarray) -> np.ndarray:
 
 
 def summarize_cached_toy_results(project_root: Path) -> dict[str, object]:
-    toy_dir = project_root / "outputs" / "toy"
+    toy_dir = project_root / "outputs"
     fb = np.load(toy_dir / "forward_backward_results.npz")
     gibbs = np.load(toy_dir / "gibbs_results.npz")
 

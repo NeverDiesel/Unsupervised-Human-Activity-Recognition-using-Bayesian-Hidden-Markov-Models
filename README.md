@@ -4,22 +4,12 @@ This repository is organized around the final project proposal steps instead of 
 
 ## Proposal-aligned layout
 
-- `data/toy/`
-  - synthetic toy sequence used for the Step 2 sanity check
-- `outputs/toy/`
-  - saved Forward-Backward and Gibbs outputs for the toy experiment
+- `toy_sanity_check/`
+  - all Step 2 toy-data code, cached outputs, scripts, and figures
 - `outputs/har/`
   - saved HAR comparison summary
 - `figures/`
   - figures used in the report
-- `src/toy_data.py`
-  - toy data generation
-- `src/toy_forward_backward.py`
-  - exact Forward-Backward implementation for the toy HMM
-- `src/toy_gibbs_sampler.py`
-  - Gibbs sampler for the toy Bayesian HMM
-- `src/proposal_step2_toy_sanity.py`
-  - utilities that summarize cached Step 2 results and regenerate toy figures
 - `src/proposal_step3_classical_hmm.py`
   - classical Gaussian HMM with EM for UCI HAR
 - `src/proposal_step4_bayesian_hmm.py`
@@ -42,7 +32,7 @@ This repository is organized around the final project proposal steps instead of 
 Run the toy sanity-check summary from cached Step 2 outputs:
 
 ```bash
-python3 scripts/run_step2_toy_summary.py
+python3 toy_sanity_check/scripts/run_step2_toy_summary.py
 ```
 
 Run the classical HMM on UCI HAR:

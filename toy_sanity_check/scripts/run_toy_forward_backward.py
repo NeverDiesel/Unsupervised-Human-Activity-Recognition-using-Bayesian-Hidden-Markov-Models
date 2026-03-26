@@ -2,18 +2,17 @@ import os
 import sys
 import numpy as np
 
-# Make sure Python can find src/
+# Make sure Python can find packages
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SRC_DIR = os.path.join(PROJECT_ROOT, "src")
-sys.path.append(SRC_DIR)
+sys.path.append(os.path.abspath(os.path.join(PROJECT_ROOT, "..")))
 
-from toy_forward_backward import load_toy_data, forward_backward
+from toy_sanity_check.src.toy_forward_backward import load_toy_data, forward_backward
 
 
 def main():
     # Paths
-    data_path = os.path.join(PROJECT_ROOT, "data", "toy", "sequence.npz")
-    output_dir = os.path.join(PROJECT_ROOT, "outputs", "toy")
+    data_path = os.path.join(PROJECT_ROOT, "data", "sequence.npz")
+    output_dir = os.path.join(PROJECT_ROOT, "outputs")
     os.makedirs(output_dir, exist_ok=True)
 
     # Load toy data

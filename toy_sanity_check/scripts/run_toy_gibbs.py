@@ -3,15 +3,14 @@ import sys
 import numpy as np
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SRC_DIR = os.path.join(PROJECT_ROOT, "src")
-sys.path.append(SRC_DIR)
+sys.path.append(os.path.abspath(os.path.join(PROJECT_ROOT, "..")))
 
-from toy_gibbs_sampler import load_toy_data, gibbs_sample_toy_hmm, posterior_mean
+from toy_sanity_check.src.toy_gibbs_sampler import load_toy_data, gibbs_sample_toy_hmm, posterior_mean
 
 
 def main():
-    data_path = os.path.join(PROJECT_ROOT, "data", "toy", "sequence.npz")
-    output_dir = os.path.join(PROJECT_ROOT, "outputs", "toy")
+    data_path = os.path.join(PROJECT_ROOT, "data", "sequence.npz")
+    output_dir = os.path.join(PROJECT_ROOT, "outputs")
     os.makedirs(output_dir, exist_ok=True)
 
     X, Z_true, true_params = load_toy_data(data_path)
