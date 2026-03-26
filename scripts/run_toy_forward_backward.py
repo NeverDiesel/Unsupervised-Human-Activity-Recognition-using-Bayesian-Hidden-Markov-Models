@@ -12,7 +12,7 @@ from toy_forward_backward import load_toy_data, forward_backward
 
 def main():
     # Paths
-    data_path = os.path.join(PROJECT_ROOT, "data", "toy", "toy_sequence.npz")
+    data_path = os.path.join(PROJECT_ROOT, "data", "toy", "sequence.npz")
     output_dir = os.path.join(PROJECT_ROOT, "outputs", "toy")
     os.makedirs(output_dir, exist_ok=True)
 
@@ -62,7 +62,7 @@ def main():
     print(gamma[:5])
 
     # Save outputs for later plotting / report use
-    save_path = os.path.join(output_dir, "toy_forward_backward_results.npz")
+    save_path = os.path.join(output_dir, "forward_backward_results.npz")
     np.savez(
         save_path,
         X=X,

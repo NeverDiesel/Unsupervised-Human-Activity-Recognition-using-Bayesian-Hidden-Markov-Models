@@ -10,7 +10,7 @@ from toy_gibbs_sampler import load_toy_data, gibbs_sample_toy_hmm, posterior_mea
 
 
 def main():
-    data_path = os.path.join(PROJECT_ROOT, "data", "toy", "toy_sequence.npz")
+    data_path = os.path.join(PROJECT_ROOT, "data", "toy", "sequence.npz")
     output_dir = os.path.join(PROJECT_ROOT, "outputs", "toy")
     os.makedirs(output_dir, exist_ok=True)
 
@@ -39,7 +39,7 @@ def main():
     print("\nTrue means:\n", true_params["means"])
     print("Posterior mean means:\n", means_post)
 
-    save_path = os.path.join(output_dir, "toy_gibbs_results.npz")
+    save_path = os.path.join(output_dir, "gibbs_results.npz")
     np.savez(
         save_path,
         pi_samples=results["pi_samples"],

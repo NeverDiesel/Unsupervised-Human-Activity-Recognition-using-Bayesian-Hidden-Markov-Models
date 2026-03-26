@@ -2,7 +2,7 @@ import os
 import sys
 import numpy as np
 
-# 让 Python 能找到 src/
+#
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
 from toy_data import generate_hmm_sequence, save_toy_data
@@ -20,7 +20,7 @@ def main():
     print("Means:\n", params["means"])
 
     os.makedirs("data/toy", exist_ok=True)
-    save_toy_data("data/toy/toy_sequence.npz", X, Z, params)
+    save_toy_data("data/toy/sequence.npz", X, Z, params)
     print("Toy data saved to data/toy/toy_sequence.npz")
 
 

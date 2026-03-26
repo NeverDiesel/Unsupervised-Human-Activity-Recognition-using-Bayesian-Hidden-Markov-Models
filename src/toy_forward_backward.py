@@ -257,7 +257,7 @@ def load_toy_data(filepath):
 
 
 if __name__ == "__main__":
-    X, Z_true, params = load_toy_data("data/toy/toy_sequence.npz")
+    X, Z_true, params = load_toy_data("data/toy/sequence.npz")
 
     results = forward_backward(
         X=X,
