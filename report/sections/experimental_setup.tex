@@ -1,0 +1,11 @@
+\section{Experimental Setup}
+The UCI HAR dataset contains 10,299 sliding-window observations collected from 30 subjects performing six activities. We use the provided train/test split, center the 561 engineered features using training-set means, project onto eight principal components, and treat each subject as one sequence.
+
+Evaluation is unsupervised: the labels are withheld during training and only used afterward for adjusted Rand index (ARI), normalized mutual information (NMI), and an aligned accuracy computed by Hungarian matching. To address the proposal feedback directly, robustness is quantified in two ways:
+\begin{enumerate}
+\item clean held-out clustering quality on the original test split, and
+\item degradation in clustering quality after adding isotropic Gaussian noise to the PCA-reduced test features.
+\end{enumerate}
+We also report held-out log-likelihood to compare probabilistic fit.
+
+For Step 2 of the proposal, we do not regenerate synthetic results from scratch here. Instead, we use the saved toy outputs in \texttt{outputs/toy/forward\_backward\_results.npz} and \texttt{outputs/toy/gibbs\_results.npz}, which capture the exact Forward-Backward posteriors and the Gibbs samples for the three-state toy HMM.

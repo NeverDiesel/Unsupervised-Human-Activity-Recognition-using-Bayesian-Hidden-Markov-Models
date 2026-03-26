@@ -1,0 +1,59 @@
+{
+  "toy": {
+    "em": {
+      "train_log_likelihood": -1513.4827901355302,
+      "test_log_likelihood": -953.2159970551837,
+      "ari": 0.47678359962221073,
+      "nmi": 0.6647789175829077,
+      "aligned_accuracy": 0.5807228915662651
+    },
+    "bayesian": {
+      "train_log_likelihood": -1524.3741402646006,
+      "test_log_likelihood": -947.7784656741487,
+      "ari": 0.5328018607249843,
+      "nmi": 0.6860709140363175,
+      "aligned_accuracy": 0.6746987951807228
+    }
+  },
+  "har": {
+    "em": {
+      "train_log_likelihood": -54412.61618890405,
+      "test_log_likelihood": -22686.104731220552,
+      "train": {
+        "ari": 0.2797154972970505,
+        "nmi": 0.46874541143501325,
+        "aligned_accuracy": 0.42899891186071815
+      },
+      "test": {
+        "ari": 0.30101324802837204,
+        "nmi": 0.49693454498908735,
+        "aligned_accuracy": 0.44757380386834067
+      },
+      "noisy_test": {
+        "ari": 0.29837549099590127,
+        "nmi": 0.486878373436111,
+        "aligned_accuracy": 0.4343400067865626
+      }
+    },
+    "bayesian": {
+      "train_log_likelihood": -54530.20881735744,
+      "test_log_likelihood": -22667.736161135334,
+      "train": {
+        "ari": 0.2801437339453806,
+        "nmi": 0.46855888689772457,
+        "aligned_accuracy": 0.42899891186071815
+      },
+      "test": {
+        "ari": 0.29993627181204713,
+        "nmi": 0.4934033382225936,
+        "aligned_accuracy": 0.44655581947743467
+      },
+      "noisy_test": {
+        "ari": 0.29384747296729824,
+        "nmi": 0.485047370598967,
+        "aligned_accuracy": 0.44010858500169664
+      }
+    },
+    "pca_explained_variance": 0.7867647385552042
+  }
+}

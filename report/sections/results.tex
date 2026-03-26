@@ -1,0 +1,52 @@
+\section{Results}
+\subsection{Step 2: Toy-data sanity check}
+The cached toy outputs show that the planted three-state Gaussian HMM is almost perfectly recovered. Using the exact Forward-Backward posteriors, the decoded state sequence achieves ARI $1.000$, NMI $1.000$, and aligned accuracy $1.000$ against the true hidden states. Using the posterior mode of the Gibbs samples, the Bayesian sampler achieves ARI $0.991$, NMI $0.983$, and aligned accuracy $0.997$. This confirms that both the exact inference and the Bayesian sampling machinery behave correctly in a controlled setting before moving to real HAR data.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\linewidth]{toy_state_recovery.png}
+\caption{Step 2 toy-data sanity check. Top: true versus decoded latent states for one sequence. Bottom: posterior state probabilities from exact Forward-Backward inference.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.76\linewidth]{toy_transition_recovery.png}
+\caption{True toy transition matrix compared with the Bayesian posterior-mean transition matrix.}
+\end{figure}
+
+\subsection{Steps 3 to 5: UCI HAR comparison and robustness}
+Table~\ref{tab:main} summarizes the main comparison on held-out HAR sequences. The EM model achieved test ARI $0.301$ and NMI $0.497$, while the Bayesian model achieved test ARI $0.300$ and NMI $0.493$. The clustering scores are therefore very close, with a slight edge for EM. However, the Bayesian posterior-mean model obtained a slightly better held-out log-likelihood ($-22667.7$ versus $-22686.1$), suggesting a marginally stronger probabilistic fit even when the state assignments are not cleaner in a clustering sense.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+Model & Test ARI & Test NMI & Test aligned acc. & Test log-likelihood \\
+\midrule
+EM-HMM & 0.301 & 0.497 & 0.448 & -22686.1 \\
+Bayesian HMM & 0.300 & 0.493 & 0.447 & -22667.7 \\
+\bottomrule
+\end{tabular}
+\caption{Held-out clustering and likelihood comparison on UCI HAR.}
+\label{tab:main}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{har_model_comparison.png}
+\caption{HAR comparison across clean clustering quality, held-out log-likelihood, and robustness under added Gaussian noise.}
+\end{figure}
+
+Our concrete robustness test adds Gaussian noise to the PCA-reduced test features. Under this perturbation, EM-HMM reaches noisy-test ARI $0.298$, whereas the Bayesian HMM reaches $0.294$. In other words, both methods degrade only slightly relative to the clean test set, and neither method dominates decisively on this robustness metric.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{convergence_diagnostics.png}
+\caption{Optimization and sampling diagnostics. Left: EM training log-likelihood. Right: Bayesian sampled-model log-likelihood trace.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\linewidth]{posterior_uncertainty.png}
+\caption{Posterior uncertainty over diagonal entries of the transition matrix, illustrating variation in state persistence across posterior samples.}
+\end{figure}

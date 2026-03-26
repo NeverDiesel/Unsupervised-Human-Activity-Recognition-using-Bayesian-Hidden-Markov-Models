@@ -1,0 +1,24 @@
+\section{Model Overview}
+Figure~\ref{fig:diagram} shows the sequential model. For each subject-specific sequence, latent states $z_t \in \{1,\dots,K\}$ evolve as a first-order Markov chain and emit reduced-dimensional sensor vectors $x_t \in \mathbb{R}^d$:
+\begin{align}
+p(z_1) &= \pi_{z_1}, \\
+p(z_t \mid z_{t-1}) &= A_{z_{t-1}, z_t}, \\
+x_t \mid z_t = k &\sim \mathcal{N}(\mu_k, \Sigma_k).
+\end{align}
+
+We fix $K=6$ hidden states to match the six activities in the benchmark and set $d=8$ principal components after centering the original 561 features. This projection retains 78.7\% of the total variance while keeping full-covariance Gaussian inference numerically stable.
+
+For the EM baseline, we maximize the observed-data likelihood with exact E-steps from Forward-Backward and closed-form M-steps for $\pi$, $A$, $\mu_k$, and $\Sigma_k$. For the Bayesian model, we use
+\begin{align}
+\pi &\sim \text{Dirichlet}(\alpha_\pi \mathbf{1}), \\
+A_k &\sim \text{Dirichlet}(\alpha_A \mathbf{1}), \\
+(\mu_k, \Sigma_k) &\sim \text{NIW}(m_0, \kappa_0, \Psi_0, \nu_0),
+\end{align}
+which are motivated by conjugacy and by the geometry of the parameter space: Dirichlet priors naturally constrain probability vectors to the simplex, while the Normal-Inverse-Wishart prior is the standard conjugate prior for multivariate Gaussian mean/covariance pairs. The Gibbs sampler alternates between sampling latent states with Forward-Filtering Backward-Sampling, sampling transition probabilities from Dirichlet posteriors, and sampling emission parameters from NIW posteriors.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\linewidth]{hmm_diagram.png}
+\caption{Graphical sketch of the Gaussian HMM used for HAR. Yellow nodes are latent activity states and blue nodes are observed PCA-reduced sensor features.}
+\label{fig:diagram}
+\end{figure}
