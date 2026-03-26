@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+outputs/.mplconfig/
+final_report.aux
+final_report.log
